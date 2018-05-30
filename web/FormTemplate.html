@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <head>
+            <link rel="stylesheet" type="text/css" href="jquery.cleditor.css" />
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+            <script type="text/javascript" src="jquery.cleditor.min.js"></script>
+
+            <script type="text/javascript">
+                $(document).ready(function() {  $("#input").cleditor();  });
+            </script>
+
+            <form action="ExtractPDF.php" method="post">
+                <textarea id="input" name="input" ></textarea>
+                <input type="submit" value="Generate"/>
+            </form>
+
+        </head>
+    </body>
+</html>
