@@ -20,7 +20,7 @@ try {
     //print_r($_POST['input']);
     $html = str_get_html($str);
 
-    //$html->find('h2[class=test]',1)->innertext = 'blabla';
+    //$html->find('h2[class=test]',1)->innertext = 'blabla ';
     foreach ($html->find('h2[class=test]') as $a) {
 
             $a->innertext = 'blabla';
