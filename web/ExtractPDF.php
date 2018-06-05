@@ -1,13 +1,13 @@
 <?php
 
-require_once dirname(__FILE__) . '/../vendor/autoload.php';
+/*require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
-/*require("simple_html_dom.php");
+require("simple_html_dom.php");
 
 use Spipu\Html2Pdf\Html2Pdf;
 use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Spipu\Html2Pdf\Exception\ExceptionFormatter;
-
+/*
 try {
     ob_start();
     include dirname(__FILE__).'/res/exemple00.php';
@@ -44,16 +44,19 @@ try {
 }
 */
 
+/*
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 
 $html = file_get_contents("C:\Users\Michaël-Portable\Desktop\Ressources projet SIA\upn-livret-pedagogique-segmi-master-miage-v01-2017-2018.html");
+echo $html;
 
+/*
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();
 //$dompdf->loadHtml('hello world');
-echo $html;
-/*$dompdf->loadHtml($html);
+
+$dompdf->loadHtml($html);
 
 // (Optional) Setup the paper size and orientation
 $dompdf->setPaper('A4', 'landscape');
@@ -62,6 +65,9 @@ $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream();*/
+$dompdf->stream();
+*/
 
+$html = file_get_contents("C:\Users\Michaël-Portable\Desktop\upn-livret-pedagogique-segmi-master-miage-v01-2017-2018.html\upn-livret-pedagogique-segmi-master-miage-v01-2017-2018.html");
+echo $html;
 
