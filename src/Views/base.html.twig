@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from wrappixel.com/demos/admin-templates/admin-wrap-lite/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jun 2018 05:50:14 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Générateur de livrets pédagogiques">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ app.rootRoute }}/web/img/favicon.png">
+    <title>GLP - Générateur de livrets pédagogiques</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ app.rootRoute }}/web/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.rootRoute }}/web/css/perfect-scrollbar.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="{{ app.rootRoute }}/web/js/morris.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="{{ app.rootRoute }}/web/css/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ app.rootRoute }}/web/css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="{{ app.rootRoute }}/web/css/pages/dashboard1.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{{ app.rootRoute }}/web/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- Summernote -->
+    <link href="{{ app.rootRoute }}/web/summernote/summernote.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Loading</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="{{ app.rootRoute }}/web/img/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="{{ app.rootRoute }}/web/img/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="{{ app.rootRoute }}/web/img/logo-text2.png" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->    
+                         <img src="{{ app.rootRoute }}/web/img/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ app.rootRoute }}/web/img/users/1.svg" alt="user" class="" /> <span class="hidden-md-down">Utilisateur &nbsp;</span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a class="waves-effect waves-dark" href="{{path('dashboard')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="{{path('listeLivret')}}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Livrets pédagogiques</span></a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-8 align-self-center">
+                        <h3 class="text-themecolor"><b style="color:#6694E2">GLP</b> - Votre <b>G</b>énérateur de <b>L</b>ivrets <b>P</b>édagogiques</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="stepwizard">
+                                    <div class="stepwizard-row setup-panel">
+                                        <div class="stepwizard-step">
+                                            <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                                            <p>Page de garde</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                            <p>Présentation de la formation</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                            <p>Organigramme et contacts</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                            <p>Calendrier universitaire</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
+                                            <p>Calendrier dérogatoire</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            <a href="#step-6" type="button" class="btn btn-default btn-circle" disabled="disabled">6</a>
+                                            <p>Maquette du diplôme</p>
+                                        </div>
+                                        <div class="stepwizard-step">
+                                            <a href="#step-7" type="button" class="btn btn-default btn-circle" disabled="disabled">7</a>
+                                            <p>Enseignement(s)</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {% if form_sent %} 
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                      <strong>Succès!</strong> Le livret a été enregistré avec succès en base de données.
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Formulaires de création de maquettes -->
+                <!-- ============================================================== -->
+                <form class="form-horizontal form-material" method="POST" action="{{path('enreistrerLivret')}}" enctype="multipart/form-data">
+                <div class="row setup-content" id="step-1">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h1>Page de garde</h1>
+                                </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Niveau d'étude</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Licence" class="form-control form-control-line" name="niveau_etude">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Année d'étude</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="2017-2018" class="form-control form-control-line" name="annee_etude">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Mention</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Finance" class="form-control form-control-line" name="mention" id="mention">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Parcours</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Financement de projet" class="form-control form-control-line" name="parcours">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Date de vote du livret</label>
+                                        <div class="col-md-12">
+                                            <input type="date" class="form-control form-control-line" name="date_vote_livret">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Nom de l'UFR</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="SEGMI" class="form-control form-control-line" name="nom_ufr">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Adresse de l'UFR</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line" name="adresse_ufr"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">URL de l'UFR</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="https://" name="url_ufr">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <intput type="button" class="btn btn-success nextBtn">Suivant</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Présentation de la formation -->
+                <!-- ============================================================== -->
+                <div class="row setup-content" id="step-2">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h1>Présentation de la formation</h1>
+                                </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description</label>
+                                        <div class="col-md-12">
+                                            <textarea type="text" class="form-control summernote" name="description_formation"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">URL de la formation</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="https://" name="url_formation">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <intput type="button" class="btn btn-success nextBtn">Suivant</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Organigramme et contacts -->
+                <!-- ============================================================== -->
+                <div class="row setup-content" id="step-3">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h1>Organigramme et contacts</h1>
+                                </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Service universitaire d'information et d'orientation</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="https://" name="suio">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Bureau aide insertion professionnelle</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="https://" name="baip">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Service des relations internationales</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="https://" name="sri">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Service generale de l'action culturelle et de l'animation du campus</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="https://" name="sgca">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Direction de l'UFR</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="Nom, prénom, bureau" name="direction_ufr">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Responsable administratif de l'UFR</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="Nom, prénom, bureau" name="responsable_ufr">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Site de l'UFR</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="https://" name="site_ufr">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Secretariat de la formation</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" placeholder="https://" name="secretariat_formation">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Responsable de formation</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="responsable_formation">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Enseignant referents</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="enseignant_referent">
+                                        </div>
+                                    </div>
+
+                                  <div class="form-group">
+                                        <label class="col-md-12">Responsable relations internationales</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="responsable_international">
+                                        </div>
+                                    </div>
+
+                                  <div class="form-group">
+                                        <label class="col-md-12">Responsable CPGE</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="responsable_cpge">
+                                        </div>
+                                    </div>
+
+                                  <div class="form-group">
+                                        <label class="col-md-12">Site internet de la formation</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="https://" class="form-control form-control-line" name="site_formation">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <intput type="button" class="btn btn-success nextBtn">Suivant</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Calendrier universitaire -->
+                <!-- ============================================================== -->
+                <div class="row setup-content" id="step-4">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h1>Calendrier universitaire</h1>
+                                </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description</label>
+                                        <div class="col-md-12">
+                                            <textarea type="text" class="form-control summernote" name="description_calendrier_univ"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <intput type="button" class="btn btn-success nextBtn">Suivant</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Calendrier dérogatoire -->
+                <!-- ============================================================== -->
+                <div class="row setup-content" id="step-5">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h1>Calendrier dérogatoire</h1>
+                                </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description</label>
+                                        <div class="col-md-12">
+                                            <textarea type="text" class="form-control summernote" name="description_calendrier_derog"></textarea>
+                                        </div>
+                                    </div>
+
+                                  <div class="form-group">
+                                        <label class="col-md-12">Calendrier (image)</label>
+                                        <div class="col-md-12">
+                                            <input type="file" class="form-control form-control-line" name="img_calendrier">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <intput type="button" class="btn btn-success nextBtn">Suivant</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Maquette diplome -->
+                <!-- ============================================================== -->
+                <div class="row setup-content" id="step-6">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h1>Maquette du diplôme</h1>
+                                </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Intitulé</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="maquette_intitule"
+                                            placeholder="Filière apprentissage">
+                                        </div>
+                                    </div>
+
+                                  <div class="form-group">
+                                        <label class="col-md-12">Maquette (image)</label>
+                                        <div class="col-md-12">
+                                            <input type="file" class="form-control form-control-line" name="img_maquette">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <intput type="button" class="btn btn-success nextBtn">Suivant</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Formulaire presentation des enseignements -->
+                <!-- ============================================================== -->
+                <div class="row setup-content" id="step-7">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h1>Enseignement(s)</h1>
+                                </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Niveau/Semestre</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Master 1/ Semestre 1" class="form-control form-control-line" name="annee">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Code EC</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Code EC" class="form-control form-control-line" name="code_ec" id="code_ec">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Intitule EC</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Projet SI" class="form-control form-control-line" name="intitule_ec">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Heure CM</label>
+                                        <div class="col-md-12">
+                                            <input type="number" class="form-control form-control-line" min="0" name="heure_cm">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Nom de l'enseignant</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Nom" class="form-control form-control-line" name="nom_professeur">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description EC/bibliographie</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line summernote" name="description_ec"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Oeuvre au programme</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line summernote" name="oeuvre"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description modalites controle session 1</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="description_modalites_session1">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description modalites controle session 2</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="description_modalites_session2">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description contenu memoire</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="description_contenu_memoire">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Tuteur memoire</label>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control form-control-line" name="tuteur_memoire"
+                                            placeholder="Entrez le rôle du tuteur">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description sur le fond du mémoire</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line summernote" name="description_fond_memoire"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description sur la forme du mémoire</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line summernote" name="description_forme_memoire"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Espace accesible</label>
+                                        <div class="col-md-12">
+                                            <input type="checkbox" value="true" class="form-control form-control-line" name="accesible" id="accesible">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Espace cours en ligne</label>
+                                        <div class="col-md-12">
+                                            <input type="checkbox" value="true" class="form-control form-control-line" name="cours_en_ligne" id="cours_en_ligne">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-info">Envoyer le formulaire</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Formulaire stage -->
+                <!-- ============================================================== -->
+                <div class="row setup-content" id="step-8">
+                    <!-- Column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <!-- Tab panes -->
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h1>Stages</h1>
+                                </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description Modules transversaux</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line summernote" name="description_modules"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description langues vivantes</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line summernote" name="description_lv"></textarea>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12">Description Bonus aux diplômes</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line summernote" name="description_bonus"></textarea>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success">OK</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                </form>
+                <!-- ============================================================== -->
+                <!-- Projects of the Month -->
+                <!-- ============================================================== -->
+                <div class="row" style="display: none">
+                    <!-- Column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h5 class="card-title">Projects of the Month</h5>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <select class="custom-select b-0">
+                                            <option selected="">January</option>
+                                            <option value="1">February</option>
+                                            <option value="2">March</option>
+                                            <option value="3">April</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="table-responsive m-t-20 no-wrap">
+                                    <table class="table vm no-th-brd pro-of-month">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">Assigned</th>
+                                                <th>Name</th>
+                                                <th>Budget</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:50px;"><span class="round">S</span></td>
+                                                <td>
+                                                    <h6>Sunil Joshi</h6><small class="text-muted">Web Designer</small></td>
+                                                <td>Elite Admin</td>
+                                                <td>$3.9K</td>
+                                            </tr>
+                                            <tr class="active">
+                                                <td><span class="round"><img src="{{ app.rootRoute }}/web/img/users/2.jpg" alt="user" width="50"></span></td>
+                                                <td>
+                                                    <h6>Andrew</h6><small class="text-muted">Project Manager</small></td>
+                                                <td>Real Homes</td>
+                                                <td>$23.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-success">B</span></td>
+                                                <td>
+                                                    <h6>Bhavesh patel</h6><small class="text-muted">Developer</small></td>
+                                                <td>MedicalPro Theme</td>
+                                                <td>$12.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-primary">N</span></td>
+                                                <td>
+                                                    <h6>Nirav Joshi</h6><small class="text-muted">Frontend Eng</small></td>
+                                                <td>Elite Admin</td>
+                                                <td>$10.9K</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="round round-warning">M</span></td>
+                                                <td>
+                                                    <h6>Micheal Doe</h6><small class="text-muted">Content Writer</small></td>
+                                                <td>Helping Hands</td>
+                                                <td>$12.9K</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Projects of the Month -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- End Page Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer"> <!--© 2018 Adminwrap by wrappixel.com --></footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{ app.rootRoute }}/web/js/jquery.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/popper.min.js"></script>
+    <script src="{{ app.rootRoute }}/web/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Summernote -->
+    <script src="{{ app.rootRoute }}/web/summernote/summernote.js"></script>
+    <!--Wave Effects -->
+    <script src="{{ app.rootRoute }}/web/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="{{ app.rootRoute }}/web/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/raphael-min.js"></script>
+    <script src="{{ app.rootRoute }}/web/js/morris.min.js"></script>
+    <!--c3 JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/d3.min.js"></script>
+    <script src="{{ app.rootRoute }}/web/js/c3.min.js"></script>
+    <!-- Chart JS -->
+    <script src="{{ app.rootRoute }}/web/js/dashboard1.js"></script>
+</body>
+
+
+</html>

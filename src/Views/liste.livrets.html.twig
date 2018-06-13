@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from wrappixel.com/demos/admin-templates/admin-wrap-lite/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Jun 2018 05:50:14 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Générateur de livrets pédagogiques">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ app.rootRoute }}/web/img/favicon.png">
+    <title>GLP - Générateur de livrets pédagogiques</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ app.rootRoute }}/web/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.rootRoute }}/web/css/perfect-scrollbar.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="{{ app.rootRoute }}/web/js/morris.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="{{ app.rootRoute }}/web/css/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ app.rootRoute }}/web/css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="{{ app.rootRoute }}/web/css/pages/dashboard1.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{{ app.rootRoute }}/web/css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- Summernote -->
+    <link href="{{ app.rootRoute }}/web/summernote/summernote.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Loading</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="{{ app.rootRoute }}/web/img/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="{{ app.rootRoute }}/web/img/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="{{ app.rootRoute }}/web/img/logo-text2.png" alt="homepage" class="dark-logo" />
+                         <!-- Light Logo text -->    
+                         <img src="{{ app.rootRoute }}/web/img/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="fa fa-times"></i></a></form>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ app.rootRoute }}/web/img/users/1.svg" alt="user" class="" /> <span class="hidden-md-down">Utilisateur &nbsp;</span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a class="waves-effect waves-dark" href="{{path('dashboard')}}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Livrets pédagogiques</span></a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-8 align-self-center">
+                        <h3 class="text-themecolor"><b style="color:#6694E2">GLP</b> - Votre <b>G</b>énérateur de <b>L</b>ivrets <b>P</b>édagogiques</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Liste des livrets</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Projects of the Month -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive m-t-20 no-wrap">
+                                    <table class="table vm no-th-brd pro-of-month">
+                                        <thead>
+                                            <tr>
+                                                <th>Niveau</th>
+                                                <th>Année</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for element in livrets %}
+                                            <tr>
+                                                <td>{{element.niveau_etude}} {{element.type_formation}}</td>
+                                                <td>{{element.Annee_formation}}</td>
+                                                <td><a class="btn btn-info btn-circle" href="{{path('livret', {id: element.id_formation})}}">
+                                                        <i class="fa fa-file-pdf-o" style="color: white"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Projects of the Month -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- End Page Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer"> <!--© 2018 Adminwrap by wrappixel.com --></footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{ app.rootRoute }}/web/js/jquery.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/popper.min.js"></script>
+    <script src="{{ app.rootRoute }}/web/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Summernote -->
+    <script src="{{ app.rootRoute }}/web/summernote/summernote.js"></script>
+    <!--Wave Effects -->
+    <script src="{{ app.rootRoute }}/web/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="{{ app.rootRoute }}/web/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/raphael-min.js"></script>
+    <script src="{{ app.rootRoute }}/web/js/morris.min.js"></script>
+    <!--c3 JavaScript -->
+    <script src="{{ app.rootRoute }}/web/js/d3.min.js"></script>
+    <script src="{{ app.rootRoute }}/web/js/c3.min.js"></script>
+    <!-- Chart JS -->
+    <script src="{{ app.rootRoute }}/web/js/dashboard1.js"></script>
+</body>
+
+
+</html>
